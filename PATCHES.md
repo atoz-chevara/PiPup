@@ -41,6 +41,15 @@ export PATH=$JAVA_HOME/bin:$PATH
 - SDK: platforms;android-28, build-tools;28.0.3
 - Hasil: `app/build/outputs/apk/debug/app-debug.apk` (±5,15 MB, debug-signed)
 
+## CI — GitHub Actions
+
+`.github/workflows/build-apk.yml` membangun APK otomatis pada setiap push/PR ke
+branch `homelab-patches` (dan bisa dipicu manual via `workflow_dispatch`).
+
+- Runner `ubuntu-latest`, JDK 11 (Temurin), `platforms;android-28`, `build-tools;28.0.3`
+- Hasil: artifact `PiPup-debug-<sha>` berisi `app-debug.apk` (retensi 30 hari)
+- SHA-256 APK dicetak di log job "Report artifact"
+
 ## Catatan lisensi
 
 Upstream `rogro82/PiPup` tidak menyertakan berkas LICENSE. Fork ini dibuat
